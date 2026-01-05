@@ -1,0 +1,28 @@
+WORK FLOW OF POWER BI
+
+Raw data
+ (connect data
+     +
+ Clean data )
+     ↓
+Modelling
+(Relationships)
+     ↓
+Calculations
+     ↓
+Visualization
+     ↓
+  Reports
+     ↓
+  Publish
+     ↓
+ Dashboards
+(app.powerbi.com)
+
+Workflow of power bi :
+● Connect data from different sources .
+● After connecting data from different sources in different formats we have to clean that data.
+● After cleaning the data we have to model our data in order to establish relationships.
+● After providing relationships we have to perform calculations(By using DAX).
+● After that we are going to visualize our data in the form of pictorial representation like charts , graphs , maps .
+● After visualization we have publish.
