@@ -1,0 +1,97 @@
+POWER BI
+What is power bi :
+Power bi is a Data visualization and Business intelligence tool, which converts raw data into visualized format.
+
+Why power bi :
+Power bi allows you to view, analyse , and visualize huge quantities of data that cannot be opened in Excel. Power bi uses powerful compression algorithms to import and cache the data within the .pbix file.
+NOTE : POWER BI IS A PART OF DATA ANALYSIS
+
+Data analysis :
+It is a process of collecting , organizing , cleaning and visualizing the data in order to extract meaningful information.
+
+Ex:
+→ Collecting data
+→ Cleaning data
+→ Studying the numbers
+→ Finding patterns
+→ Making conclusions
+→ Helping the company to make decisions
+
+Steps for Data analysis :
+1. Understanding business problems :
+Based on different domains like sports, healthcare , sales , marketing etc.., we’ve to understand the problems which we’re facing.
+Ex:
+We’ve to analyse sales & profit by following domains.
+→ Location
+→ Product demand
+→ Market
+
+2. Collecting data from different sources / Extraction of data / data connection :
+It is a process of collecting data from different sources like Excel, Csv ,data files etc.
+→ Data can be from any source.
+
+3. Data cleaning / Data transformation :
+Handling null values, handling errors , replacing values, splitting , merging etc.
+
+4. Data analysis / Data calculation :
+→ It includes data calculation
+→ Calculating sum, avg,profits etc.
+
+5. Data visualization and interpretation :
+Converting a normal format of data into graphical or pictorial representation is called visualization.
+→ It is nothing but understanding what the data results mean and using it to make decisions.
+
+POWER BI :
+Power bi is a Data visualization and Business intelligence tool, which converts raw data into visualized format.
+
+BI :
+It is a combination of tools and processes , which is used to analyse data and visualize data to make better decisions.
+
+Features of power bi :
+● It allows us to connect huge amounts of data.
+● It allows us to connect data from different sources like Excel, Csv, Sql, Azure, pdf’s etc.
+● Easy drag and drop , no need to write codes.
+● Power bi allows us to get insights and turn into actions to make better decisions.
+● Real time updates also take place.
+
+Advantages of power bi :
+1. User friendly interface :
+● Power bi has an interface that allows us to view, analyse and visualize the data easily.
+2. Data integration :
+● Power bi allows users to easily connect data from different sources , including excel , pdf’s etc.
+3. Customizable dashboards :
+● Users can create customized dashboards and reports to display data in a way that is meaningful to them.
+4. Real time data :
+● Power bi allows us to connect real time data
+● Power bi supports real time data processing , which means users can view up to date data in their dashboards and reports.
+5. Collaboration :
+● Power bi allows users to share their dashboards and reports with others , making collaborating on data analysis projects easy.
+
+Components of power bi :
+Power bi desktop
+Power bi Service
+Power bi Mobile
+Sub Components :
+Power query
+Power pivot
+Power view
+Power map
+Power Q & A
+
+1. Power bi Desktop :
+→ It is a desktop application used for development in the sense of connecting data from different sources , transforming data and creating reports.
+2. Power bi Service :
+→ Power bi service is a cloud based platform that allows us to share and collaborate our reports and dashboards.
+3. Power bi Mobile :
+→ It allow us to view our reports and track our reports on our mobile → Basically it is a mobile version of power bi desktop
+4. Power Query :
+→ It is a tool that helps us with data cleaning & transformation in power bi we have an inbuilt tool that is power query editor.
+5. Power pivot :
+→ It is a tool which allows us to do calculations and analysis (DAX).
+→ It consists of inbuilt tool that is table view
+6. Power view :
+→ It is a tool which allows us to do the visualization of data. We have an inbuilt tool that is report view .
+7. Power maps :
+→ It is a tool which allows us to visualize millions of rows of geographical data.
+8. Power Q & A :
+→ It is an AI tool which allows us to ask questions to our data and responds with suitable visualization for answers.
