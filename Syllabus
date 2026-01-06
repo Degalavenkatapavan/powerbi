@@ -1,0 +1,37 @@
+Power – BI Course Content
+
+1. INTRODUCTION TO POWER BI 
+• Overview of Power BI  
+• Purpose and scope in data analysis and visualization  
+• Role of Power BI in the BI ecosystem 
+
+2. DATA TRANSFORMATION 
+• Introduction to Power Query Editor  
+• Overview of transformation tools 
+
+3. CONNECTING DATA 
+• Types of data connection modes: Import, DirectQuery, Live Connection 
+• Connecting to different data sources (Excel, SQL Server, CSV, web, etc.) 
+
+4. DATA CLEANING 
+• Removing errors and empty values  
+• Text operations (split, concatenate, case change, etc.)  
+• Number operations (rounding, addition, subtraction, etc.)  
+• Date/Time operations (extract, format, manipulate dates)  
+• Replace values  
+• Merging and splitting columns  
+• Pivoting and unpivoting data 
+
+5.Modeling
+Creating relationships ,managing it ,understanding schemas etc
+
+6. DAX (DATA ANALYSIS EXPRESSIONS) 
+• Introduction to DAX  
+• Types of DAX functions (aggregation, time intelligence, logical, etc.)  
+• Differences between calculated columns and measures  
+• Writing and applying DAX formulas 
+
+7. VISUALIZATION 
+• Creating and customizing visualizations (charts, tables, slicers, etc.)  
+• Formatting visuals for better insights  
+• Using filters and slicers effectively
