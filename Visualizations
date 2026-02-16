@@ -1,0 +1,167 @@
+Power BI Visualizations
+
+Types of Power BI Visualizations
+A. Charts
+Charts are graphical representations of data in Power BI. Use them to simplify complex data sets and make it easier to understand and interpret the data. Power BI offers a variety of chart types, each suited to different kinds of data and different data visualization tasks. 
+1. Area chart
+There are two main types of area charts in Power BI:
+Basic Area Chart
+This is the most common type of area chart. It displays data points as a line, with the area between the line and the axis filled with colour. Basic area charts help show trends over time or compare different categories of data.
+ 
+Stacked Area Chart
+A stacked area chart shows multiple categories of data stacked on top of each other. This chart type is useful for showing how different categories contribute to a whole.
+
+Choosing the Right Type of Area Chart
+The best type of area chart to use will depend on your specific data and needs. Here are some things to consider:
+•	The number of data points you have. If you have a lot of data points, you may want to use a basic area chart or a stacked area chart with a smaller number of categories.
+•	The type of data you have. If your data is continuous, you can use a line chart or an area chart. If your data is categorical, you can use a bar chart or a column chart.
+
+
+2. Bar Charts:
+They are a simple and effective way to display categorical data, allowing users to compare and analyse data across different categories. Bar charts are ideal for showcasing quantitative data where the values are not too large, making them suitable for various purposes like comparing sales figures, analysing customer demographics, and visualizing performance metrics.
+Types of Bar Charts
+•	Clustered Bar Chart: This is the most common type of bar chart, where bars are grouped for each category, allowing for easy comparison of values within the same category.
+ 
+•	Stacked Bar Chart: In this chart, the bars are stacked vertically, representing the contribution of each category to a total value. This is useful for visualizing the composition of a whole and identifying the dominant categories.
+ 
+•	100% Stacked Bar Chart: Similar to the stacked bar chart, the bars always sum up to 100%, making it ideal for showing percentages and proportions.
+ 
+.
+3. Line Charts:
+Power BI uses a line chart to visually represent data points connected by straight lines. Users employ it to visualize trends and patterns over time or across categories, making it ideal for continuous data such as time series data, stock market trends, sales figures, etc.
+ 
+
+
+ Power BI Slicers:
+Power BI slicers are interactive controls that allow you to filter the data displayed in your reports. They are visual filters that can be placed directly onto a report canvas, enabling users to interact with them to filter visuals displayed on a report page.
+There are four types of slicers:
+•	Dropdowns
+•	Vertical lists
+•	Tiles
+•	Date pickers
+How to Create Power BI Slicers
+To add a slicer to your report, simply choose the slicer visual from the list of visualizations in the right-hand pane of Power BI Desktop. After that, add the fields you want to use to filter your report.
+Selection controls
+A few options allow you to control how items are selected in a slicer. These are single select, multi-select with CTRL, and whether to show the "Select all" option.
+ 
+Hierarchy slicers
+To save space, you can add multiple fields to a slicer visual to create a hierarchy slicer. This works for both the list and dropdown filters.
+ 
+To create a hierarchy slicer, add additional columns to the Fields area. Once you have created a hierarchy, you can also customize the look and feel of the slicer under the Hierarchy options. You can then adjust the indentation of each level of the hierarchy and the icon used to expand or collapse the hierarchy.
+ 
+ 
+Excluding items from a slicer
+You can easily remove items you do not wish to appear in a slicer.
+Right-click the item in the slicer you want to remove, and select Exclude.
+You can verify which items have been removed by hovering over the 'Applied filters' icon on the top right-hand corner of the slicer. All excluded (and filtered) items will show up here.
+ 
+You can also hide certain filters or exclusions so they do not appear under the 'Applied filters' list. To do this, click the show/hide icon in the filters pane on the right-hand side of the report. You can also easily clear the exclusion from the filter pane by removing that filter.
+ 
+Syncing slicers
+You can sync up slicers between the pages in your report by enabling the ‘Sync slicers’ pane from the ribbon.
+ 
+This can be a big time-saver if you tend to have the same slicers across multiple pages in your report - such as a date slicer - so that when a user selects a certain date range on one page, the same date range is automatically applied to the other date slicers throughout the report.
+ 
+Customizing slicer interactions
+Using the 'Edit interactions' feature in the ribbon, you can specify which visuals a slicer can filter. This gives you far more control over your report.
+ 
+I have found this feature particularly useful when presenting comparisons in my reports. For example, if you want to compare the sales performance of two stores, you can divide your canvas in half and present the same visuals on either side with slicers that only filter the visuals on their own side.
+Slicers have two options when editing their interactions with other visuals:
+•	Filter - Filtering is enabled.
+•	None - The slicer will not filter the visual.
+
+
+How To Use Drill Down And Up Options In Power BI?
+Power BI’s Drill down and drill-up tools enable users to explore several levels of data hierarchy to acquire insights into specific areas of interest.
+Drill Down
+•	Select a visual or chart that contains hierarchical data. For example, a chart that shows sales data by region, state, and city.
+•	Click on the data point that you want to drill down into. For example, click on the region name to drill down from the regional to the state level.
+•	Click on the “Drill down” button in the visualization pane or right-click on the data point and select “Drill down.”
+•	The chart will update to show the data at a more granular level. For example, if you drill down from the region to the state level, the chart will show sales data by state.
+Drill Up
+•	Select a visual or chart that contains hierarchical data.
+•	Right-click on the visual or chart and select “Drill up” or click the “Drill up” button in the visualizations pane.
+•	The chart will update to show the data at a higher level of granularity. For example, if you drill down from the regional to the state level, the chart will show sales data by region.
+Point to be Noted: Drill-down and drill-up options may not be available for all visualizations or charts in Power BI, and it depends on the data hierarchy you have created. Also, the exact steps may vary depending on the version of Power BI you are using.
+
+
+Decomposition tree
+ 
+The decomposition tree visual lets you visualize data across multiple dimensions. It is also an artificial intelligence (AI) visualization, so you can ask it to find the next dimension to drill down into based on certain criteria. 
+Pie charts
+ 
+Pie charts show the relationship of parts to a whole.
+
+Doughnut charts
+ 
+Doughnut charts are similar to pie charts. They show the relationship of parts to a whole. The only difference is that the center is blank and allows space for a label or icon.
+Funnel charts:
+ 
+Funnels help visualize a process that has stages, and items flow sequentially from one stage to the next. One example is a sales process that starts with leads and ends with purchase fulfillment. 
+Gauge Chart: 
+ 
+A radial gauge chart has a circular arc and displays a single value that measures progress toward a goal. The goal, or target value, is represented by the line (needle). Progress toward that goal is represented by the shading. And the value that represents that progress is shown in bold inside the arc. All possible values are spread evenly along the arc, from the minimum (left-most value) to the maximum (right-most value).
+In the example, we are a car retailer, tracking our Sales team's average sales per month. Our goal is 200,000 and represented by the location of the needle. The minimum possible average sales is 100,000 and we set the maximum as 250,000. The blue shading shows that we're currently averaging approximately $180,000 this month. Luckily, we still have another week to reach our goal.
+Note: create measures to set target value, min value and max value for gauge chart 
+Ex: min=0,max=20000,target = 120000
+Radial gauges are a great choice to:
+Show progress toward a goal.
+Represent a percentile measure, like a KPI.
+Show the health of a single measure.
+Display information that can be quickly scanned and understood.
+Key influencers chart
+ 
+A key influencer chart displays the major contributors to a selected result or value.
+Key influencers are a great choice to help you understand the factors that influence a key metric. For example, what influences customers to place a second order or why were sales so high last June.
+
+KPIs
+A Key Performance Indicator (KPI) is a visual that communicates the amount of progress made toward a measurable goal.
+KPIs are a great choice:
+To measure progress (what am I ahead or behind on?).
+To measure distance to a metric (how far ahead or behind am I?).
+
+Basic map
+ 
+Use a basic map to associate both categorical and quantitative information with spatial locations.
+ArcGIS map
+ 
+The combination of ArcGIS maps and Power BI takes mapping beyond the presentation of points on a map to a whole new level. The available options for base maps, location types, themes, symbol styles, and reference layers creates gorgeous informative map visuals. 
+Azure map
+ 
+ 
+Filled map (Choropleth)
+ 
+A filled map uses shading or tinting or patterns to display how a value differs in proportion across a geography or region. Quickly display these relative differences with shading that ranges from light (lower) to dark (more).
+
+Shape map
+ 
+Shape maps compare regions on a map using color. A shape map can't show precise geographical locations of data points on a map. Instead, its main purpose is to show relative comparisons of regions on a map by coloring them differently.
+ 
+Matrix:
+ 
+The matrix visual is a type of table visual that supports a stepped layout. A table supports two dimensions, but a matrix makes it easier to display data meaningfully across multiple dimensions. Often, report designers include matrixes in reports and dashboards to allow users to select one or more element (rows, columns, cells) in the matrix to cross-highlight other visuals on a report page.
+•	The matrix automatically aggregates the data and enables drilling down into the data.
+Q&A visual:
+ 
+The Q&A visual provides users with a text box to query data in Power BI reports. Users can use natural language to query data, and the Q&A visual interprets the query and provides an appropriate visualization.
+For example, if a user asks a question like "What were the product sales in 2019?" the Q&A visual queries the relevant data and create an appropriate visualization to display the results. This visualization can be in many different formats, such as a chart or a table.
+ 
+
+
+ 
+Smart narrative:
+ 
+The Smart narrative adds text to reports to point out trends, key takeaways, and add explanations and context. The text helps users to understand the data and identify the important findings quickly.
+Treemaps:
+ 
+Treemaps are charts of colored rectangles, with size representing value. They can be hierarchical, with rectangles nested within the main rectangles. The space inside each rectangle is allocated based on the value being measured. And the rectangles are arranged in size from top left (largest) to bottom right (smallest).
+Treemaps are used for:
+To display large amounts of hierarchical data.
+When a bar chart can't effectively handle the large number of values.
+To show the proportions between each part and the whole.
+To show the pattern of the distribution of the measure across each level of categories in the hierarchy.
+To show attributes using size and color coding.
+To spot patterns, outliers, most-important contributors, and exceptions.
+
+
+
