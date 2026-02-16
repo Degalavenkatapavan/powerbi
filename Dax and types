@@ -1,0 +1,432 @@
+                             DAX
+                    [Data Analysis Expression]
+-It is also knowns as “Formula language/Functional Language”.
+Basic Syntax:
+-Varname=A(B[C])D E
+A-Inbuilt DAX function.
+B-Table Name.
+[C]-Column Name.
+D&E-Optional.
+D-Operator.
+EValue.
+Where we use these D&E?
+-If ever u want to calculate percentage of particular dataset…. like these type of scenarios we can use “D&E”.
+Example: Whenever u want to calculate % of a student based on his/her marks obtained; we can use these basic syntax;
+
+--Obtained marks/Total marks * 100.
+Now, we can write the same formula by using DAX function (i.e., ”DIVIDE”).
+DAX Formula:
+-Percentage=DIVIDE(Table name [obtained marks],[total marks])*100. 
+Here;
+*--represents ‘D’(which is known as operator’).
+100-represents ‘E’(which is known as value’).
+
+Simple Example of DAX:
+-Total Sales=SUM(Table name [Sales]).
+DAX Can be performed as following:
+-Calculated Column.
+-Creating Measures.
+-Creating calculated tables.
+DIFFERNCES BETWEEN CALCULATED COLUMNS AND MEASURES:
+1.CALCULATED COLUMNS:
+-Returns a column (adds new column to table).
+-Row context.
+-Used for filtering and categorization.
+-Adds new column to table.
+
+
+2.MEASURES:
+-Returns Single Value.
+-Column Context.
+-Used to do aggregation on data.
+EX: Sum, min, max, avg, count….
+
+TYPES OF DAX FUNCTIONS:
+1.Aggregation Functions.
+2.Logical & Conditional Functions.
+3.Date & Time Functions.
+4.Filter Functions.
+5.Time Intelligence Functions.
+
+1.AGGREGATION FUNCTIONS:
+  -These are of 2 types;
+               1.Regular Aggregate Functions.
+                2.Iterator Functions (With ‘X’).
+ 1.Regular Aggregate Functions:
+-Works on a single column directly. [no row – by - row evaluation].
+-These functions simply aggregate on all visible rows in the current filter context-They do not have ‘row-context’.
+EX: SUM, MIN, MAX, AVG, COUNT….
+2.ITERATOR FUNCTIONS:
+-These functions have an ‘X’ at the end, like., SUMX, MINX, MAXX, AVERAGEX, COUNTX… 
+They perform row – by – row iteration before aggregation.
+EX: SUMX (Sales, Sales[Quantity]  * Sales[Price]).
+
+
+DAX Aggregation Functions:
+DAX Sum: Adds all the numbers in a column.
+Syntax :
+                      SUM(<column>)
+Ex: sum= SUM(‘product lookup’[product price]) 
+
+DAX SumX: Returns the sum of an expression evaluated for each row in a table.
+Syntax :
+                       SUMX(<table, expression>)
+Ex: Sumx= SUMX(‘product lookup’, ‘Product Lookup’[Product Price]-‘Product lookup[Selling price])    
+  
+DAX Max: Returns the largest numeric value in a column, or between two scalar expressions.
+Syntax :
+                        MAX(<column>)
+Ex: Max= MAX(‘product lookup’[product price]) 
+                       
+DAX Maxx : Evaluates an expression for each row of a table and return the largest numeric value.
+Syntax :
+                      MAXX(<table, expression>)
+EX: Max= MAXX(‘product lookup’, SUM(‘Product Price’[product price]))
+
+DAX Min: Returns the smallest numeric value in a column, or between two scalar expressions.
+Syntax :
+                     MIN(<column>)
+EX: Min=MIN(‘product lookup’[product price])
+
+
+
+DAX MinX: Returns the smallest numeric value that results from evaluating an expression for each row of a table.
+Syntax :
+                            MINX(<table, expression>)
+EX: Min=MINX(‘product lookup’, SUM(‘Product Price’[product price]))
+
+DAX Average: This function calculates the average of the values contained in the provided column as input. 
+Syntax :
+                                   AVERAGE(<column>)
+EX: Average Retail Price= AVERAGE(‘product lookup’[product price])
+
+DAX AverageX
+Calculates the average (arithmetic mean) of a set of expressions evaluated over a table.
+Syntax :
+                      AVERAGEX(<table>,<expression>)
+
+EX: Average Retail Price= AVERAGEX(‘product lookup’,SUM(‘Product lookup’[product price]))
+
+
+
+DAX Product: Returns the product of the numbers in a column.
+Syntax :
+                        PRODUCT(<column>)
+
+DAX ProductX
+Returns the product of an expression evaluated for each row in a table.
+Syntax :
+                      PRODUCTX(<table, expression>)
+
+
+ 
+DAX Count
+This function only accepts a column as an argument. The following types of values are counted in rows using the COUNT function:
+•	Numbers, Dates, strings
+•	It does not count empty/blank values.
+Syntax :
+                          COUNT(<column>)
+EX: Count= COUNT(‘product lookup’[product price])
+
+DAX CountX: counts total rows of a set of expressions evaluated over a table.
+
+Syntax :
+                   COUNTX(<table, expression>)
+
+EX: Count= COUNTX(‘product lookup’[product price])
+ 
+
+DAX CountBlank: It counts blank rows present in the column
+Syntax :
+                     COUNTBLANK(<column>)
+
+DAX CountRows: Returns total number of rows in the table
+Syntax :  
+                  COUNTROWS([<table>])
+
+DAX DistinctCount: Determines how many distinct values there are in a column.
+Syntax :
+                           DISTINCTCOUNT(<column>)
+
+Divide: It will divide numerator by denominator
+Syntax:     
+                        DIVIDE(numerator,Denominator)
+  X=sumx(‘sales Data’,’sales Data[order quantity]* ‘product lookup’[ProductCost])
+RELATED:  To access column from one table to another 
+•	Both table should be related by the means of relationship
+
+
+Total Sales	SUMX(‘SalesData’,‘Sales Data’[Order Quantity] * RELATED( ‘Product Lookup’[Product Price] ) )
+Total Costs	SUMX(‘Sales Data’, ‘Sales Data’[Order Quantity] * RELATED( ‘Product Lookup’[Product Cost] ) )
+Total Profits	[Total Sales] – [Total Costs]
+
+
+
+Quantity Sold=SUM(‘Sales Data’[OrderQuantity])
+Quantity Return=SUM(‘Returns Data’[Return Quantity])
+Average (Retail) Price=AVERAGE(‘Product Lookup’[productprice])
+subcategoryCount=COUNT(‘Productsubcategories’[Subcategory name])
+total return quantity by the cust=COUNT(‘Return data’[ReturnQuantity])
+Total orders= DISTINCTCOUNT(‘Sales Data’[order number])
+Total Customers=DISTINCTCOUNT(‘Sales Data’[CustomerKey])
+ReturnRate=[Quantity Return]/[Quantity sold]
+Total Revenue(sales) = SUMX('Sales Data','Sales Data'[Order Qyantity]*RELATED('Product Lookup'[ProductPrice]))
+Total cost= SUMX( ‘Sales Data’, ‘Sales Data’[Order Quantity] * RELATED( ‘Product Lookup’[Product Cost] ) )
+Total Profit=[Total Sales] – [Total Costs]
+ 
+
+
+Conditional And Logical functions:
+IF: Given condition is true then it will return output.
+Syntax: IF(Logical Test1, Result if true,IF(LT2,r2,IF(LT3,r3,a3)))
+	
+Condition                         Desired  output           output when condn fails
+Membership=IF(‘customer’[AnualIncome]<40000, “Nocard” ,”YESCARD”)
+Nested IF: When we need to check condition more than one then we go for nested if 
+EX: 
+Membership=IF(‘customer’[AnualIncome]<40000, “Nocard”, IF(‘customer’[AnualIncome]<60000, “Silver card”, IF(‘customer’[AnualIncome]<80000, “Gold Card”,  “Platimum card”)))
+For multiple conditions:
+SWITCH: To avoid nested if we go for switch
+Syntax: SWITCH(<expression>, <value>, <result>, [<value>, <result>]…[, <else>])
+Ex: SWITCH(‘Calendar Lookup’[MonthName], “January”, “1”, “February”, “2”, “March”, “3”,…….
+ “December”, “12”, “Not a month”)
+Price Range=SWITCH(‘Product Lookup’[Product Price], >500, “high”, >300, “mid”, “low”)
+It will throw error so to resolve that TRUE() is used
+NOTE: Using TRUE() in SWITCH makes it act like multiple IF statements. It checks each condition one by one and returns the result as soon as one is true.
+Price Range=SWITCH(TRUE(),‘Product Lookup’[Product Price]>500, “high”, ‘Product Lookup’[Product Price]>300, “mid”, ‘Product Lookup’[Product Price]<100, “cheap”, “very high”)
+ 
+Logical Functions:
+AND: When there are 2 conditions and both of them should be true then we go for ‘ IF ’
+With ‘AND’ function
+Syntax:  AND(<logical1>,<logical2>) 
+EX:
+Target Cust=IF(AND(‘Customer Lookup’[Gender]= “Male”, ‘Customer Lookup[AnualIncome]>80000), “ High”, “low”)
+Note: AND accepts only 2 arguments. Hence we go for and operator (&&)
+Target Cust=IF(‘Customer Lookup’[Gender]= “Male” && ‘Customer Lookup[AnualIncome]>80000)&& ‘Customer Lookup’[children]>2, “Yes”, “NO”)
+OR: When any one condition should be true then we go for OR function with IF condition
+Syntax: OR(<logical1>,<logical2>)
+EX: 
+Target Cust=IF(OR(‘Customer Lookup’[Gender]= “Male”, ‘Customer Lookup[AnualIncome]>80000), “ High”, “low”)
+Target Cust=IF(‘Customer Lookup’[Gender]= “Male” || ‘Customer Lookup[AnualIncome]>80000) || ‘Customer Lookup’[children]>2, “Yes”, “NO”)
+
+
+
+ 
+
+Date and Time Functions 
+
+CALENDAR: returns the table with a single column  name as date
+Syntax: CALENDAR(start_date, end date)
+
+•	DATE: It gives the specific date in the DateTime format.
+Syntax: DATE(<year>, <month>, <day>)
+          EX: DATE(2020,01,01)
+              sal = IF(
+                'ProjectID (Sheet2)'[StartDate] < DATE(2023,1,1),
+                 "Eligible for hike",
+                 "Not eligile”)
+
+ 
+•	DATEDIFF: This function is used to get the difference in the number of days between two dates.
+Syntax: DATEDIFF(<Date1>, <Date2>, <Interval>)
+          EX: DateDiff = DATEDIFF(DATE(2023,5,12), DATE(2023,4,12),YEAR)
+date = DATEDIFF(DATE(2022,12,01),DATE(2022,12,03),DAY)
+             DATEDIFF=DATEDIFF('ProjectID(Sheet2)'[StartDate],'ProjectID(Sheet2)'[EndDate],MONTH)
+
+
+•	 DATEVALUE: The DAX DATEVALUE function is used to convert a text representation of a date into a date value in Power BI. It's helpful when you have date data in a text format and need to work with it as actual dates.
+  Syntax - DATEVALUE(<date_text>)
+       EX: DateCol = DATEVALUE("12-12-22")
+
+•	DAY: Returns the day of a month as a number from 1 to 31.
+Syntax: DAY(<date>)
+         Ex: dAY = DAY(DATE(2023,4,12))
+
+
+•	MONTH: Returns the month as a number from 1 to 12. 1 represents January and 12 represents December.
+Syntax: MONTH(<datetime>)
+        Ex: MONTH = MONTH(DATE(2023,4,12))
+
+
+•	YEAR: Returns the year from a given date. The returned value is in the range of 1900-9999.
+Syntax: YEAR(<date>)
+        Ex: YEAR= YEAR(DATE(2023,4,12))
+
+
+•	NOW: Returns the current date and time of the system.
+
+: NOW()
+        Ex: TIME = NOW()
+
+•	QUARTER: Returns the quarter number of a year from a given date.
+Syntax: QUARTER(<date>)
+       Ex:TIME = QUARTER(DATE(2023,3,1))
+
+•	TODAY: Returns the current date
+Syntax: TODAY()
+       EX: TIME = TODAY()
+
+•	EDATE : function is used to calculate a new date by adding or subtracting a specified number of months from a given date. It's a useful function for date-based calculations involving months.
+     Syntax - EDATE(<start_date>, <months>)
+
+      Example - FutureDate = EDATE(DATE(2023, 9, 24), 3) - In this example,  the EDATE function adds 3 months to the date September 24, 2023, resulting in a new date representing December 24, 2023. 
+
+•	 EOMONTH : function is used to calculate the last day of the month which is a specified number of months before or after a given date. It's particularly useful for financial and date-related calculations where you need to determine month-end dates.
+Syntax - EOMONTH(<start_date>, <months>)
+
+Example - LastDayOfMonth = EOMONTH(DATE(2023, 9, 24), 2) - In this example, the EOMONTH function calculates the last day of the month which is two months after September 24, 2023. The result would be November 30, 2023, making it a valuable tool for tasks like financial reporting in Power BI.
+
+•	 WEEKNUM function is used to calculate the week number for a given date.
+Syntax - WEEKNUM(<date>, [<week_start>])
+Example - WeekNumber = WEEKNUM(DATE(2023, 9, 24)) - In this example, the WEEKNUM function calculates the week number for the date September 24, 2023.
+
+•	WEEKDAY: It returns day as number from 1-7,where sun=1 and sat=7
+EX: wn= WEEKDAY('Calendar Lookup'[Date])
+
+Questions:
+1.	Create a calendar from Jan 2022 to Dec 2024.
+2.	What is the year of each order?
+3.	In which month was each order placed?
+4.	On what day of the month was the order placed?
+5.	Convert order date text into a valid date.
+6.	What is today’s date?
+7.	What is the current date and time?
+8.	What is the end-of-month date for each order?
+9.	What is the expected delivery date (1 month after the order date)?
+10.	How many days have passed since the order was placed?
+11.	On which day of the week was the order placed?
+12.	What is the week number of the order date?
+
+
+ 
+
+Filtering :
+FILTER():The FILTER() function in DAX is used to apply a filter to a table and return only the rows that meet a given condition
+Syntax: FILTER(<table>, <expression>)
+•	<table>: The table you want to filter.
+•	<expression>: A condition that rows in the table must meet to be included.
+Example: Simple FILTER()
+Let’s say you have a table called CustomerLookup  with a column Customer Lookup[AnnualIncome] You want to filter the table to include only rows where the Customer Lookup[AnnualIncome] is greater than 1000.
+*use filter() with calculate() 
+Filtered Sales = FILTER(Customer Lookup, Customer Lookup[AnnualIncome] > 1000)
+
+CALCULATE():The CALCULATE() function in DAX is used to evaluate an expression in a modified filter context. It applies one or more filters to the data before performing the calculation, allowing you to control how filters affect your measures.
+ SYNTAX: CALCULATE(<expression>, <filter1>, <filter2>, ...)
+Ex:Total High Income Customers = CALCULATE(SUM(CustomerLookup[AnnualIncome]), FILTER(Customer Lookup,Customer Lookup[AnnualIncome] > 50000)
+ 3.ALL()
+Removes all filters from a table or column.
+Example 1: Ignore all filters on a table
+tot sal = CALCULATE(SUM('Table 1 (Sheet1)'[Salary]),ALL('Table 1 (Sheet1)'[Salary]))
+tot sal = CALCULATE(SUM('Table 1 (Sheet1)'[Salary]),ALL('Table 1 (Sheet1)'[Salary]))
+DAX
+Total Revenue All = CALCULATE(SUM(Sales[Total Revenue]), ALL(Sales))
+Use case: Calculates total revenue ignoring any slicers or filters.
+Example 2: Ignore filters on a specific column
+DAX
+Total Revenue All Category = CALCULATE(SUM(Sales[Total Revenue]), ALL(Sales[Category]))
+Use case: Ignores filters on Category but keeps others.
+
+Questions:
+1.	What is the total quantity sold for the product “Laptop”?
+Laptop Quantity Sold = CALCULATE( SUM('Sales Data'[OrderQuantity]),FILTER('Sales Data', 'Sales Data'[ProductName] = "Laptop"))
+
+2.	What is the total revenue generated in the current year?
+Current Year Revenue = 
+CALCULATE([Total Revenue (Sales)],YEAR('Sales Data'[Order Date]) YEAR(TODAY()))
+
+3.	What is the total quantity sold across all products, ignoring filters?
+Quantity Sold (All Products) = 
+CALCULATE(SUM('Sales Data'[OrderQuantity]), ALL('Sales Data'[ProductName]))
+
+4.	How many orders were placed in the month of January?
+January Orders = 
+CALCULATE(DISTINCTCOUNT('Sales Data'[Order Number]),
+  FILTER('Sales Data', MONTH('Sales Data'[Order Date]) = 1))
+
+5.	What is the total revenue without any product-level filters applied?
+Revenue Without Product Filter = 
+CALCULATE([Total Revenue (Sales)],ALL('Product Lookup'))
+
+6.	What is the total profit from orders with more than 5 units?
+Profit for Bulk Orders = 
+CALCULATE( [Total Profit],FILTER('Sales Data', 'Sales Data'[OrderQuantity] > 5))
+
+ 
+Time intelligence:
+TOTALMTD() (Total Month-To-Date)
+1-1-2023 ---------------------22-9-2023 2-9-2023,4-9-2023,22-9-2023
+Current year=2023
+Current month=September
+Current day=22
+Definition: Calculates the total (sum) of an expression from the start of the current month to the selected date.
+Syntax:
+    TOTALMTD(<expression>, <dates>[, <filter>])
+
+Example:
+    	Current MTD(Dec) =TOTALMTD([Total Sales],Sheet1[Dates]))
+
+TOTALQTD() (Total Quarter-To-Date)
+]
+Definition: Computes the total (sum) of an expression from the start of the current quarter up to the selected date.
+Syntax:
+    TOTALQTD(<expression>, <dates>[, <filter>])
+
+Example:
+Current QTD(Q4) = TOTALQTD([Total Sales],Sheet1[Dates])
+
+
+TOTALYTD() (Total Year-To-Date)
+
+Definition: Computes the total (sum) of an expression from the start of the year up to the selected date.
+Syntax:
+    TOTALYTD(<expression>, <dates>[, <year_end_date>])
+
+Example:
+    	Current YTD(2023) = TOTALYTD([Total Sales],Sheet1[Dates])
+
+Note: The 'year_end_date' parameter allows setting a fiscal year-end (e.g., "06-30" for June 30th).
+
+
+
+
+
+DATESMTD() (Date Range for Month-To-Date)
+
+Definition: Returns a column containing all the dates from the beginning of the current month up to the latest date in the filter context.
+Syntax:
+    DATESMTD(<dates>)
+
+Example:
+   		Current_month_date = DATESMTD(Sheet1[Dates])
+
+
+- TOTALMTD(), TOTALQTD(), and TOTALYTD() directly return aggregated totals.
+- DATESMTD() returns a table of dates, which can be used inside functions like CALCULATE().
+
+
+1.	PREVIOUSYEAR:Returns a table of dates for the previous year.
+Syntax: PREVIOUSYEAR(<dates>)
+Prev_MTD(Dec) = CALCULATE([Total Sales],PREVIOUSMONTH(DATESMTD(Sheet1[Dates])))
+Prev_QTD(Q3) = CALCULATE([Total Sales],PREVIOUSQUARTER(DATESQTD(Sheet1[Dates])))
+Prev_YTD(2022) ==CALCULATE([Total Sales],PREVIOUSYEAR(DATESYTD(Sheet1[Dates])))
+
+
+
+This calculates the total sales for the same period in the previous month, Quarter,Year Respectively.
+
+NOTE:If the given date column has dates from multiple years, it correctly considers the previous YEAR/MONTH/QUARTER of the latest available date.
+
+2.	 FIRSTDATE & LASTDATE:Returns the first or last date in the current context.
+             Syntax:    FIRSTDATE(<dates>)
+                             LASTDATE(<dates>)
+             Example:
+FirstDate = FIRSTDATE(Sheet1[Dates])
+LastDate = LASTDATE(Sheet1[Dates])
+
+
+
+
+
+
+
+ 
