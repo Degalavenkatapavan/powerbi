@@ -1,0 +1,644 @@
+Power Query Editor
+
+Text Based Operations
+
+Splitting Column: Used to break a single column into multiple parts based on a rule or pattern
+Why Do We Split Columns?
+ To extract useful parts of text.
+ To separate values stored together (e.g., First & Last Name, Date & Time).
+ Helps in organizing and analyzing data better.
+To Access Split Options: Power Query Editor → Home tab → Split Column
+
+Types of Splitting Options:
+1. Split by Delimiter
+ Delimiter = A symbol or character that separates values (e.g., comma ,, space , hyphen -)
+ Power Query automatically detects common delimiters or allows you to set a custom one.
+Example: Column:"John,Doe" Split by delimiter (,) → ["John", "Doe"]
+Use Cases:
+ Split full name: "John Doe" → "John" and "Doe"
+ Split address: "Bangalore, Karnataka" → "Bangalore" and "Karnataka"
+2. Split by Number of Characters
+ Splits text after a specific number of characters.
+Example: Column:"ABCDEF" Split after 3 characters → ["ABC", "DEF"]
+Use Case:
+ Fixed-length codes (e.g., "PIN123" → "PIN" and "123")
+3. Split by Positions
+ You define exact positions where the column should split.
+Example: Column:"20240521" Split at positions: 4, 6 → ["2024", "05", "21"]
+Use Case:
+ Splitting date string into year, month, and day.
+4. Split by Uppercase to Lowercase Transition
+ Splits text wherever there's a change from uppercase to lowercase.
+Example: "PowerBIUser" → ["Power", "B", "I", "User"]
+Use Case:
+ Breaking camel case text used in code or identifiers.
+5. Split by Digit to Non-Digit or Non-Digit to Digit
+ Useful for data like "Product123" → ["Product", "123"]
+Merging Columns:
+ Merging columns means combining two or more columns into a single text column.
+ It's useful when you want to create full names, addresses, or unique IDs by joining text from multiple columns.
+When Do You Use Merge?
+ Combine First Name and Last Name
+ Merge City, State, and Country
+ Create custom codes or identifiers
+To Merge Columns: Home tab → Transform tab → Merge Columns
+Steps to Merge Columns:
+1. Select the columns you want to merge (hold Ctrl to select multiple).
+2. Click on Merge Columns under the Transform tab.
+3. Choose a separator:
+o Space
+o Comma
+o Dash
+o None
+o Custom (e.g., “ | ”)
+4. Name the new merged column.
+5. Click OK.
+
+Important Notes:
+ Only Text columns can be merged directly.
+ For numbers/dates, first convert them to Text using:
+Transform → Data Type → Text
+ Original columns remain unless you choose to remove them.
+ Always rename the merged column meaningfully (e.g., "Full Name").
+Full Name
+John Doe
+Real-Life Use Cases:
+Columns
+Purpose
+Merged Column Example
+First Name, Last Name
+Full Name
+John Doe
+Area, City, State
+Full Address
+JP Nagar, Bangalore, Karnataka
+Dept Code, Employee ID
+Unique Employee Code
+HR-1002
+Product Name, Version
+Product Identifier
+Laptop X
+
+Formatting Text: Used to clean and standardize text data for better analysis
+Why Format Text?
+ Ensure consistency in spelling and structure.
+ Make your data clean and ready for visuals or analysis.
+ Fix common data entry issues like extra spaces, wrong case, inconsistent symbols.
+To Format Text: Power Query Editor → Transform tab → Format dropdown
+Text Formatting Options
+1. UPPERCASE
+ Converts all letters to CAPITALS.
+ Good for standardizing codes, names, etc.
+Example: "bangalore" → "BANGALORE"
+2. lowercase
+ Converts all letters to small case.
+Example: "DATA SCIENCE" → "data science"
+3. Capitalize Each Word
+ Makes the first letter of each word uppercase, rest lowercase.
+Example: "data analyst" → "Data Analyst"
+Use Case: Formatting names, cities, titles.
+4. Trim
+ Removes extra spaces from the beginning and end of text.
+Example: " John " → "John"
+Use Case: Clean up manual entries or copied data.
+5. Clean
+ Removes non-printable characters (e.g., invisible symbols copied from web or PDFs).
+Example: "Hello World" (with hidden character) → "Hello World"
+6. Add Prefix / Add Suffix
+ Adds text before (prefix) or after (suffix) each value.
+Example – Add Prefix: Original: "123" → With prefix "ID-" → "ID-123"
+Example – Add Suffix: Original: "Bangalore" → With suffix " City" → "Bangalore City"
+Real-Life Use Cases:
+Scenario
+Formatting Used
+Clean name column
+Trim + Capitalize Each Word
+Standardize product codes
+UPPERCASE
+Remove hidden web characters
+Clean
+Add tag before employee ID
+Add Prefix ("EMP-")
+Extracting Text: Used to pull out specific parts of text from a column
+Why Use Text Extract?
+ Extract useful parts from longer strings.
+ Focus only on the needed portion of a value (e.g., first name from full name, domain from email).
+ Helps in cleaning, splitting, and transforming data into usable formats.
+To Access Extract: Transform tab → Extract (Dropdown)
+Extract Options:
+1. Extract First Characters
+ Extracts the first N characters from the left.
+Example: "Bangalore" → Extract first 3 → "Ban"
+Use Case: Get area codes, year (from date string like "2024-05-21")
+2. Extract Last Characters
+ Extracts the last N characters from the right.
+Example: "ABC12345" → Extract last 3 → "345"
+Use Case: Get ID suffix, last digits of a code.
+3. Extract Range
+ Extracts characters starting from a position with a specific length.
+Syntax: Start position (0-based) and Number of characters
+Example: Text: "Karnataka" Start at 3, length 4 → "nata"
+Use Case: Slice specific parts of fixed-format codes.
+4. Text Before Delimiter
+ Extracts everything before the specified character or symbol.
+Example: "john.doe@gmail.com" Delimiter: @ → "john.doe"
+Use Case: Get username from an email.
+5. Text After Delimiter
+ Extracts everything after the specified delimiter.
+Example: "john.doe@gmail.com" Delimiter: @ → "gmail.com"
+Use Case: Extract domain from email, location from a code.
+6. Text Between Delimiters
+ Extracts text between two specified delimiters.
+Example: "Name[12345]Code" Start: [ , End: ] → "12345"
+Use Case: Extract codes, tags, or IDs within brackets or quotes.
+Number Based Operations:
+What Are Statistical Operations?
+Statistical operations help you analyze numeric data by summarizing and understanding patterns, trends, and variations. These are mostly used to:
+ Get totals, averages, or counts
+ Measure trends like min/max values
+ Group data to identify patterns
+To Access Statistics: Transform tab → Statistics dropdown (Only appears when you select a numeric column)
+Statistical Operations:
+Operation
+Description
+Example (Column Values: 10, 20, 30)
+Result
+Sum
+Adds all values
+10 + 20 + 30
+60
+Average (Mean)
+Calculates the average
+(10+20+30)/3
+20
+Minimum
+Finds the smallest number
+10
+Maximum
+Finds the largest number
+30
+Median
+Middle value when sorted
+20
+Standard Deviation
+Measures how spread out values are
+8.16
+Count Values
+Number of rows with data
+3
+Count Distinct Values
+Counts only unique values
+Depends
+Real-Life Use Cases:
+Scenario
+Operation Used
+Outcome
+Total sales from all branches
+Sum
+Total revenue
+Find average marks of students
+Average
+Mean performance score
+Identify top performer’s score
+Maximum
+Highest marks
+Get the lowest rating
+Minimum
+Worst feedback
+Understand performance spread
+Standard Deviation
+Measures consistency
+Count how many students
+Count Values
+Total number
+Count how many gave feedback
+Count Distinct
+Unique feedback entries
+Rounding: Rounding is used to reduce the number of decimal places in a number to make it easier to read, compare, or report.
+Rounding is applied when:
+ You want to clean up messy decimal numbers.
+ You want consistent data formats.
+ You're working with prices, percentages, or scientific values.
+To Access Rounding: Transform tab → Rounding (Dropdown) (Only appears when a numeric column is selected)
+Example:
+Trigonometric & Scientific Operations:
+Although not commonly used in every business scenario, trigonometric and scientific functions in Power Query are helpful for:
+1. Advanced calculations in technical, engineering, scientific, or academic data.
+2. Transforming or generating values based on mathematical rules.
+3. Supporting real-world measurements, like GPS coordinates, angles, time-series modeling, etc.
+Information Operations:
+These functions help in checking or identifying characteristics of numbers, such as whether a number is:
+ Odd or Even
+ Positive or Negative
+Use Case:
+Original Value
+Round (2)
+Round Down
+Round Up
+23.456
+23.46
+23
+24
+99.999
+100.00
+99
+100
+-12.34
+-12.34
+-12
+-13
+Column Value
+IsEven
+IsOdd
+Positive/Negative
+5
+FALSE
+TRUE
+Positive
+-2
+TRUE
+FALSE
+Negative
+0
+TRUE
+FALSE
+Neutral (Not > 0 or < 0)
+Date-Based Operations:
+In order to work with dates , analyse time- based trends we will use date operations
+To access :
+Transform tab → Select a date column → Click on Date OR Add Column tab → Date
+Break a full date into its components:
+Operation
+Description
+Example (2024-03-15)
+Result
+Year
+Extracts the year
+2024-03-15
+2024
+Satrt Of Year
+Extracts start date of year
+2024-03-15
+1-1-2023
+End Of Year
+Extracts end date of year
+2024-03-15
+31-12-2023
+Month
+Extracts the month number
+2024-03-15
+3
+Month Name
+Extracts full month name
+2024-03-15
+March
+Quarter
+Returns quarter number (1–4)
+2024-03-15
+1
+Week of Year
+ISO Week number
+2024-03-15
+11
+Day
+Returns day of the month
+2024-03-15
+15
+Day of Week
+0 = Sunday, 6 = Saturday
+2024-03-15
+5 (Friday)
+Day Name
+Returns name of the day
+2024-03-15
+Friday
+Age Calculation
+Transform → Date → Age
+ Calculates the duration between the selected date and today’s date.
+ Result is in duration format (e.g., 23.00:00:00 = 23 days)
+Time-Based Operations:
+Path:
+Transform tab → Select a time column → Click on Time Add Column tab → Time
+1. Time Only
+Purpose: Extracts only the time part from a datetime value. Use case: You want to remove the date and just keep values like 08:30:00. Example: 2024-05-01 08:30:00 → 08:30:00
+2. Local Time
+Purpose: Converts a datetime value into the local system time zone. Use case: Working with data from different time zones and want to align all to your local time. Example: UTC 03:00 → adjusted to local time zone (e.g., +05:30)
+3. Parse
+Purpose: Converts a text string that looks like a time into an actual time data type. Use case: When your time column is in text format like "14:45" and you want to use time functions. Example: "14:45" (Text) → 14:45:00 (Time)
+4. Hour → From/Start of/End of
+Purpose: Extracts hour part or rounds time to start/end of the hour.
+ Hour → From: Pulls just the hour (e.g., 14:30:00 → 14)
+ Start of Hour: Rounds down to 14:00:00
+ End of Hour: Rounds up to 14:59:59
+5. Minute
+Purpose: Extracts the minute component from a time value. Example: 14:45:30 → 45
+6. Second
+Purpose: Extracts the second part from a time value. Example: 14:45:30 → 30
+7. Subtract
+Purpose: Subtracts one time value from another. Returns a duration. Use case: Calculate time differences (e.g., working hours) Example: Logout - Login = Duration (02:15:00)
+8. Combine Date and Time
+Purpose: Combines two separate columns — one with date, one with time — into a single datetime column. Example:
+ Date: 2025-06-12
+ Time: 14:00:00
+ Combined: 2025-06-12 14:00:00
+9. Earliest
+Purpose: Returns the earliest (minimum) time from the selected column. Use case: Identify first log-in, start time, etc.
+10. Latest
+Purpose: Returns the latest (maximum) time value. Use case: Find the last log-out or latest transaction.
+Duration Based Operations:
+1.Days / Hours / Minutes / Seconds
+Extract individual parts of a duration.
+Option
+Description
+Example
+Days
+Number of days in a duration
+3.02:00:00 → 3
+Hours
+Hours component (remaining after days)
+3.05:30:00 → 5
+Minutes
+Minutes part
+00:45:30 → 45
+Seconds
+Seconds part
+00:00:30 → 30
+2. Total Years / Days / Hours / Minutes / Seconds
+Returns the total value as a decimal (includes fractions of units)
+Option
+Description
+Example
+Total Years
+Full years (decimal)
+730 days → 2 years
+Total Days
+Full + partial days
+2.12:00:00 → 2.5 days
+Total Hours
+Complete duration in hours
+1.12:00:00 → 36 hours
+Total Minutes
+Converts full duration to minutes
+01:30:00 → 90 minutes
+Total Seconds
+Converts to seconds
+00:02:30 → 150 seconds
+3. Subtract
+Subtracts one duration from another
+Used when comparing durations Example: Time taken today − Time taken yesterday
+4. Multiply
+Multiplies the entire duration by a number
+Use case: Project duration doubled due to delay  Duration * 2
+5. Divide
+Divides the duration by a number
+Use case: Split total duration across team members
+6. Statistics → Min / Max / Median / Average / Standard Deviation
+Option
+Purpose
+Minimum
+Shortest duration in column
+Maximum
+Longest duration
+Average
+Average time spent
+Median
+Middle value in sorted durations
+Std Dev
+Spread of time spent across records
+Transformations on any column type:
+Path: Home Tab → Transform Group (Ribbon) → Any Column section
+1. Data Type: Date/Time
+Purpose: Change the data type of a column to Date, Time, DateTime, Decimal, Text, etc. Example: "2025-06-12" (text) → Date type
+2. Replace Values
+Purpose: Replaces specific values with something else. Example: Replace "null" with "N/A"(Useful for cleaning messy or inconsistent data.)
+3. Unpivot Columns
+Purpose: Converts wide data into long format (attribute-value pairs). Example: Turn multiple columns into two columns: one for headers, one for values.Great for normalizing data for analysis.
+4. Detect Data Type
+Purpose: Automatically assigns data types to all columns.
+Use this after importing raw data. Example: "123" → converted to Whole Number
+5. Fill (Down/Up)
+Purpose: Fills missing values with the value above or below. Example:Fill Down → Fills "HR" for B too
+Dept
+Name
+HR
+A
+B
+6. Pivot Column
+Purpose: Converts row values into column headers. Example: first row  headers, second row values for headers
+7. Move
+Purpose: Change column order
+ Move Left
+ Move Right
+ Move to Beginning / End
+8. Rename
+Purpose: Change the column name
+Essential for clean, readable datasets.
+9. Convert to List
+Purpose: Converts a column to a list (Power Query list object)
+Helpful in advanced scenarios like referencing unique values or filtering dynamically.
+Table Operations:
+Path: Transform Tab → Table Section
+This section contains tools for reshaping the structure of entire tables rather than individual columns.
+1. Group By
+Purpose: Groups rows based on one or more column values and allows aggregation (e.g., sum, count, average). Often used in summaries or aggregations ,supports custom grouping and aggregations Example: Group by Department → Get total Salary per department.
+Department
+Employee
+Salary
+HR
+A
+50000
+IT
+B
+60000
+HR
+C
+55000
+IT
+D
+65000
+After group by:
+2. Use First Row as Headers
+Purpose: Promotes the first row to become column headers. Use Case: Promotes headers and can also "Demote" headers to move them into row values.
+Input Table:
+Column1
+Column2
+Column3
+Name
+Age
+City
+A
+25
+Pune
+B
+30
+Mumbai
+Output table:
+Department
+Total Salary
+HR
+105000
+IT
+125000
+Name
+Age
+City
+A
+25
+Pune
+B
+30
+Mumbai
+3. Transpose
+Purpose: Flips rows into columns and columns into rows. Example:
+Input table:
+Name
+Age
+City
+A
+25
+Pune
+B
+30
+Mumbai
+Output:
+Column1
+Column2
+Name
+A
+Age
+25
+City
+Pune
+Name
+B
+Age
+30
+City
+Mumbai
+4. Reverse Rows
+Purpose: Reverses the entire order of rows in the table. Example: If your data is in descending order, reverse it to get ascending order.
+5. Count Rows
+Purpose: Adds a new step showing the total number of rows in the table. Output: A single-row, single-column table
+General Advance Operations:
+Button
+What it Does
+Typical Use Case
+Mini Walk-Through & Result
+Column From Examples(Add Column From Examples)
+Learns a transformation from the examples you type.
+“I need a new column that shows ‘Last, First’ names—but I don’t want to write any code.”
+1. Select First Name & Last Name.
+2. Column from Examples >From Selection.
+3. In the new preview column, type “Smith, John”.
+Power Query infers: Text.Combine({[LastName],[First Name]}, ", ") → Auto-builds the column for every row.
+Custom Column
+Lets you write an M formula of any complexity.
+Calculations that the GUI can’t do directly (ratios, nested IFs, etc.).
+Example: Profit= [Revenue] - [Cost]
+Invoke Custom Function
+Runs a user-defined function on each row, returning the result into a new column.
+Re-use logic (e.g., distance between two lat/longs, an API call, a fiscal-year converter).
+1. Create function fxFiscalYear(Date).
+2. Add Column > Invoke Custom Function.
+3. Pass [OrderDate] into the function. → New Fiscal Year column.
+Conditional Column
+Builds an IF…THEN…ELSE column without writing code.
+Banding / labels (High, Medium, Low), pass/fail flags, text categorisation.
+Configure:If [Sales] ≥ 1000 then "High"else if [Sales] ≥ 500 then "Medium"else "Low"
+Index Column(From 0, From 1, or Custom)
+Adds a running number.
+Primary key substitute, order preservation, ranking, join helper.
+Add Column >Index Column >From 1 → 1, 2, 3 …
+Duplicate Column
+Makes a copy of a column, leaving the original untouched.
+Try a risky transformation without losing the original; set up splitting/formatting while preserving raw data.
+Right-click ProductName > Duplicate Column. Rename copy to ProductName_Clean and apply transformations only to the duplicate.
+AI INSIGHTS:
+Group allows you to apply pre-trained AI models and Azure ML services directly to your data in Power Query, enabling powerful transformations without coding.
+1. Text Analytics
+Use Case: Apply natural language processing (NLP) models to textual data.
+Features:
+ Detect Language – Identify the language of the text.
+In order to detect the language or sentiment of the text will go with analytics
+ Extract Key Phrases – Pull important keywords or phrases from a sentence.
+ Sentiment Analysis – Return positive/neutral/negative score for text.
+Note: Not available in query editor without sign in
+2. Vision
+Use Case: Apply image analysis models (via Azure Cognitive Services).
+Features:
+ Detect objects in image URLs
+ Identify content type (e.g., landscape, text, object)
+ Get descriptions and tags
+Example Table:
+Image URL
+https://.../cat.jpg
+After applying Image Tagging:
+Image URL
+Tags
+.../cat.jpg
+cat, animal, pet
+3. Azure Machine Learning
+Use Case: Apply custom ML models deployed in your Azure Machine Learning workspace.
+How it works:
+ You need an Azure ML account
+ Models must be deployed as web services
+ Power Query can connect and pass data to your model to get predictions
+What is Data Modelling in Power BI?
+Data modelling is the process of connecting different tables using relationships and optimizing your data structure to enable powerful analysis with DAX and visuals.
+Key Components of Data Modelling
+1. Tables
+ Imported from various sources (Excel, SQL, APIs, etc.)
+ Can be fact (transactions) or dimension (lookup).
+Fact Table:
+ Stores transactional data
+ Contains foreign keys that relate to dimension tables
+ Grows over time (new rows keep adding)
+ Includes measures (like SUM, AVERAGE, COUNT, etc.)
+Dimension Table:
+ Contains unique values (primary key)
+ Used to filter, group, and slice data in visuals
+ Typically small in size
+2. Relationships
+ Connect tables using common columns (keys)
+ Types:
+o One-to-many (most common)
+o Many-to-one
+o Many-to-many (rare & needs careful handling)
+3. Primary & Foreign Keys
+ Used to relate two tables:
+o Customer ID in Customer Table (primary key)
+o Customer ID in Sales Table (foreign key)
+4. Star Schema vs Snowflake Schema
+ Star Schema: Fact table in center, connected to dimensions
+ Snowflake Schema: Dimensions are normalized (sub-tables linked to dimension tables)
+Important Tools in Power BI for Modelling
+Feature
+Use
+Manage Relationships
+View/edit relationships between tables
+Model View
+Drag-drop to create/manage relationships visually
+Mark as Date Table
+Designate a calendar table for time intelligence
+Hide Columns
+Hide technical columns from report view
+Create Calculated Columns/Measures
+Add logic using DAX
+Role-Level Security (RLS)
+Restrict data visibility based on user roles
+Best Practices
+1. Use surrogate keys (like ID numbers) instead of names for relationships.
+2. Avoid bi-directional relationships unless necessary.
+3. Keep your model as flat (star-schema) as possible.
+4. Always create a Calendar Table for time-based analysis.
+5. Use measures over calculated columns for efficiency.
+Example
+Tables:
+ Sales (Fact Table): Sale ID, Customer ID, Product ID, Date, Quantity, Revenue
+ Customers (Dim Table): Customer ID, Name, Region
+ Products (Dim Table): Product ID, Name, Category
+ Calendar (Dim Table): Date, Month, Year
+Relationships:
+ Sales[Customer ID] → Customers[Customer ID]
+ Sales[Product ID] → Products[Product ID]
+ Sales[Date] → Calendar[Date]
