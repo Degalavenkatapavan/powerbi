@@ -1,0 +1,150 @@
+SQL
+•	What is SQL? 
+•	Difference between DBMS and RDBMS? 
+•	What are constraints? 
+•	Types of joins? 
+•	Difference between WHERE and HAVING? 
+•	Difference between DELETE, DROP, and TRUNCATE? 
+•	Difference between UNION and UNION ALL? 
+•	What is normalization? 
+•	What is a primary key and foreign key? 
+•	Inner Join 
+•	Left Join 
+•	Right Join 
+•	Full Join 
+•	Self Join 
+•	Cross Join 
+•	Why are we using ON in joins? 
+•	Difference between INNER and LEFT JOIN? 
+•	What is a subquery? 
+•	Types of subqueries? 
+•	Difference between correlated and non-correlated subquery? 
+•	Which query executes first? 
+•	Can subquery return multiple rows? 
+CTE Questions 
+•	What is CTE? 
+•	Why do we use CTE? 
+•	Difference between CTE and subquery? 
+
+Example:
+WITH emp_cte AS (
+   SELECT dept_id, AVG(salary) avg_salary
+   FROM employee
+   GROUP BY dept_id
+)
+SELECT *
+FROM emp_cte;
+Aggregate Functions
+•	COUNT() 
+•	SUM() 
+•	AVG() 
+•	MIN() 
+•	MAX() 
+Questions:
+•	Difference between COUNT(*) and COUNT(column)? 
+•	Can aggregate functions work with NULL values? 
+GROUP BY Questions
+•	Why GROUP BY is used? 
+•	Execution order of SQL query? 
+•	Can we use WHERE after GROUP BY? 
+Scenario-Based SQL Questions
+Example 1
+Find the 2nd highest salary.
+SELECT MAX(salary)
+FROM employee
+WHERE salary < (
+   SELECT MAX(salary)
+   FROM employee
+);
+
+Example 2
+Find duplicate records.
+SELECT name, COUNT(*)
+FROM employee
+GROUP BY name
+HAVING COUNT(*) > 1;
+Example 3
+Find employees whose salary is greater than department average.
+Example 4
+Difference between RANK(), DENSE_RANK(), ROW_NUMBER()
+VERY IMPORTANT for analyst roles.
+Data Warehousing Questions
+JD clearly mentioned:
+•	Star Schema 
+•	Snowflake Schema 
+•	Facts vs Dimensions 
+Star Schema vs Snowflake Schema
+Star Schema	Snowflake Schema
+Denormalized	Normalized
+Faster query	More complex
+Less joins	More joins
+
+Fact Table vs Dimension Table
+Example they may ask:
+Answer:
+•	Fact → contains measurable data 
+•	Dimension → descriptive information 
+
+Power BI Questions
+Important Questions
+•	What is Power BI? 
+•	Difference between Power BI Desktop and Service? 
+•	What is Power Query? 
+•	What is DAX? 
+•	Difference between calculated column and measure? 
+•	What is relationship? 
+•	Types of filters? 
+•	What is slicer? 
+•	Difference between append and merge? 
+•	What is pivot and unpivot? 
+•	What is drill down? 
+•	What is KPI visualization? 
+Excel Questions
+Prepare:
+•	VLOOKUP 
+•	XLOOKUP 
+•	HLOOKUP 
+•	Pivot Table 
+•	Conditional Formatting 
+•	COUNTIF 
+•	SUMIF 
+
+________________________________________
+
+
+
+Real-Time / Analytical Questions
+•	If sales suddenly drop in dashboard, what will you do? 
+•	If duplicate records come, how will you identify? 
+•	How do you handle NULL values? 
+•	How will you optimize slow query? 
+Manager Round Questions
+•	Tell me about yourself 
+•	Why Data Analyst? 
+•	Why should we hire you? 
+•	Explain one project 
+•	Explain your SQL knowledge 
+•	Explain Power BI project 
+•	What challenges did you face? 
+•	Are you comfortable with 12:30 PM – 9:30 PM shift? 
+•	Are you comfortable with probation? 
+•	Why do you want to join NULogic? 
+•	How will you handle pressure? 
+•	What training did you take? 
+•	Have you done any projects? 
+•	Did you use SQL practically? 
+•	Have you created dashboards? 
+Priority order:
+1.	SQL Joins 
+2.	GROUP BY + HAVING 
+3.	Subqueries 
+4.	CTE 
+5.	RANK functions 
+6.	Star vs Snowflake 
+7.	Fact vs Dimension 
+8.	Power BI basics 
+9.	Append vs Merge 
+10.	Pivot vs Unpivot 
+11.	Excel Pivot Tables 
+12.	Tell me about yourself 
+
